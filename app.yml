@@ -7,4 +7,11 @@
     - application_servers
     - flask
   roles:
-    - flask
+    - role: firewall
+      vars:
+        firewalld_open_services:
+          - http
+        firewalld_open_ports:
+          - "8080/tcp"
+
+    - role: flask

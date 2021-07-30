@@ -2,4 +2,4 @@
 - import_playbook: database.yml
 - import_playbook: app.yml
 - import_playbook: load_balancer.yml
-- import_playbook: smoke_test.yml
+- import_playbook: smoketest.yml

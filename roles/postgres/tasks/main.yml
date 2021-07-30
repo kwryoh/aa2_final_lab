@@ -1,7 +1,7 @@
 ---
 # tasks file for roles/postgres
-- import_task: install.yml
-- import_task: initialize.yml
-- import_task: setup.yml
-- import_task: service.yml
-- import_task: configure.yml
+- import_tasks: install.yml
+- import_tasks: initialize.yml
+- import_tasks: setup.yml
+- import_tasks: service.yml
+- import_tasks: configure.yml

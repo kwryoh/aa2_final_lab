@@ -1,9 +1,14 @@
 ---
 - name: Deploy haproxy load balancer
   hosts: load_balancers
-  gather_facts: false 
+  gather_facts: false
   become: true
   tags:
     - load_balancers
   roles:
-    - haproxy
+    - role: firewall
+      vars:
+        firewalld_open_service:
+          - http
+
+    - role: haproxy

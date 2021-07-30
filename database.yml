@@ -6,4 +6,9 @@
   tags:
     - database_servers
   roles:
-    - postgres
+    - role: firewall
+      vars:
+        firewalld_open_services:
+          - postgresql
+
+    - role: postgres
