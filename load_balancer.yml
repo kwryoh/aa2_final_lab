@@ -10,5 +10,7 @@
       vars:
         firewalld_open_service:
           - http
+        firewalld_open_port:
+          - "80/tcp"
 
     - role: haproxy
