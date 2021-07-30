@@ -8,9 +8,9 @@
   roles:
     - role: firewall
       vars:
-        firewalld_open_service:
+        firewalld_open_services:
           - http
-        firewalld_open_port:
+        firewalld_open_ports:
           - "80/tcp"
 
     - role: haproxy
