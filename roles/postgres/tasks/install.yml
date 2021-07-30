@@ -11,7 +11,8 @@
 
 - name: Disable postgresql module
   command: "dnf -qy module disable postgresql"
-  warning: false
+  args:
+    warn: false
   when:
     - "ansible_os_family == 'RedHat'"
     - "ansible_distribution_version == '8'"
