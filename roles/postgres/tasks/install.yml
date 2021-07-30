@@ -1,11 +1,27 @@
 ---
-- name: Install Postgres packages
+- name: Install Postgres repo
   package:
     name: "{{ __package }}"
     state: present
     disable_gpg_check: true
   loop:
     - "{{ postgres_rhel8_repo }}"
+  loop_control:
+    loop_var: __package
+
+- name: Disable postgresql module
+  command: "dnf -qy module disable postgresql"
+  warning: false
+  when:
+    - "ansible_os_family == 'RedHat'"
+    - "ansible_distribution_version == '8'"
+
+- name: Install Postgres packages
+  package:
+    name: "{{ __package }}"
+    state: present
+    disable_gpg_check: true
+  loop:
     - "{{ postgres_packages }}"
     - "{{ postgres_library }}"
   loop_control:
