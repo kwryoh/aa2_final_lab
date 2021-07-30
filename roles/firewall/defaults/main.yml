@@ -1,2 +1,4 @@
 ---
-# defaults file for roles/firewall
+# defaults file for firewall
+firewalld_open_services: []
+firewalld_open_ports: []

@@ -1,0 +1,9 @@
+---
+- name: Open tcp port
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+  loop: "{{ firewalld_open_ports }}"
+

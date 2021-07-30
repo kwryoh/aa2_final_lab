@@ -1,0 +1,9 @@
+---
+- name: Open service port
+  firewalld:
+    service: "{{ item }}"
+    state: enabled
+    immediate: true
+    permanent: true
+  loop: "{{ firewalld_open_services }}"
+
