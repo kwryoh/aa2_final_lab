@@ -1,0 +1,45 @@
+---
+instances:
+- name: frontend1
+  image: rhel-8.3
+  openstack_cloud: "{{ GUID }}-project"
+  flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+  key_name: "{{ GUID }}-keypair"
+  security_groups: "{{ GUID }}-HostSG"
+  net_name: "{{ GUID }}-dev-network"
+  metadata:
+    AnsibleGroup: load_balancers
+    deployment_name: dev
+
+- name: app1
+  image: rhel-8.3
+  openstack_cloud: "{{ GUID }}-project"
+  flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+  key_name: "{{ GUID }}-keypair"
+  security_groups: "{{ GUID }}-HostSG"
+  net_name: "{{ GUID }}-dev-network"
+  metadata:
+    AnsibleGroup: app_servers
+    deployment_name: dev
+
+- name: app2
+  image: rhel-8.3
+  openstack_cloud: "{{ GUID }}-project"
+  flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+  key_name: "{{ GUID }}-keypair"
+  security_groups: "{{ GUID }}-HostSG"
+  net_name: "{{ GUID }}-dev-network"
+  metadata:
+    AnsibleGroup: app_servers
+    deployment_name: dev
+
+- name: appdb1
+  image: rhel-8.3
+  openstack_cloud: "{{ GUID }}-project"
+  flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+  key_name: "{{ GUID }}-keypair"
+  security_groups: "{{ GUID }}-HostSG"
+  net_name: "{{ GUID }}-dev-network"
+  metadata:
+    AnsibleGroup: database_servers
+    deployment_name: dev
