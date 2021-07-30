@@ -13,9 +13,6 @@
   command: "dnf -qy module disable postgresql"
   args:
     warn: false
-  when:
-    - "ansible_os_family == 'RedHat'"
-    - "ansible_distribution_version == '8'"
 
 - name: Install Postgres packages
   package:
