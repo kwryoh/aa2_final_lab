@@ -1,0 +1,41 @@
+---
+instances:
+- name: frontend1
+  image: rhel-8.3
+  flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+  key_name: "{{ guid }}-keypair"
+  security_groups: "{{ guid }}-HostSG"
+  net_name: "{{ guid }}-dev-network"
+  metadata:
+    AnsibleGroup: load_balancers
+    deployment_name: dev
+
+- name: app1
+  image: rhel-8.3
+  flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+  key_name: "{{ guid }}-keypair"
+  security_groups: "{{ guid }}-HostSG"
+  net_name: "{{ guid }}-dev-network"
+  metadata:
+    AnsibleGroup: app_servers
+    deployment_name: dev
+
+- name: app2
+  image: rhel-8.3
+  flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+  key_name: "{{ guid }}-keypair"
+  security_groups: "{{ guid }}-HostSG"
+  net_name: "{{ guid }}-dev-network"
+  metadata:
+    AnsibleGroup: app_servers
+    deployment_name: dev
+
+- name: appdb1
+  image: rhel-8.3
+  flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+  key_name: "{{ guid }}-keypair"
+  security_groups: "{{ guid }}-HostSG"
+  net_name: "{{ guid }}-dev-network"
+  metadata:
+    AnsibleGroup: database_servers
+    deployment_name: dev

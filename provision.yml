@@ -1,0 +1,27 @@
+---
+- name: Play provision openstack instance
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    guid: "{{ lookup('ENV', 'GUID') }}"
+  tasks:
+    - name: Include vars
+      include_vars: ./instance_variables.yml
+
+    - name: Create instances
+      os_server:
+        cloud: "{{ guid }}-project"
+        name: "{{ item.name }}"
+        image: "{{ item.image }}"
+        key_name: "{{ item.key_name }}"
+        flavor: "{{ item.flavor }}"
+        security_groups: "{{ item.security_groups }}"
+        delete_fip: yes
+        wait: no
+        nics:
+          - net-name: "{{ item.net_name }}"
+        meta: "AnsibleGroup={{ item.metadata.AnsibleGroup }},deployment_name={{ item.metadata.deployment_name }}"
+        userdata: |
+          #!/bin/bash
+      loop: "{{ instances }}"
