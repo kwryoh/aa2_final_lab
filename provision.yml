@@ -4,9 +4,6 @@
   connection: local
   gather_facts: false
   tasks:
-    - name: Include vars
-      include_vars: ./instance_variables.yml
-
     - name: Create instances
       os_server:
         cloud: "{{ item.openstack_cloud }}"
