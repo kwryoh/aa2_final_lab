@@ -21,7 +21,7 @@
         - smoketest
 
 - name: test
-  debug: "{{ groups.load_balancers[0] }}"
+  var: groups.load_balancers[0]
 
 - name: End to end smoke tests
   hosts: app_servers
