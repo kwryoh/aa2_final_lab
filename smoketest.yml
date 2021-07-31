@@ -29,7 +29,7 @@
   tasks:
 
     - name: test
-      debug: msg="{{ lb_instance.openstack_servers }}"
+      debug: msg="{{ load_balancers.openstack_servers }}"
 
     - name: Check webserver for correct response
       uri:
