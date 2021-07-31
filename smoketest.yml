@@ -20,6 +20,9 @@
       tags:
         - smoketest
 
+- name: test
+  debug: "{{ groups.load_balancers[0] }}"
+
 - name: End to end smoke tests
   hosts: app_servers
   become: false
@@ -30,7 +33,7 @@
 
     - name: Check webserver for correct response
       uri:
-        url: "http://{{ groups.load_balancers[0] }}/ping"
+        url: "http://{{ groups.load_balancers[0]['private_v4'] }}/ping"
         return_content: yes
       until: '"alive" in result.content'
       retries: 10
