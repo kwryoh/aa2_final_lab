@@ -21,22 +21,25 @@
         - smoketest
 
 - name: End to end smoke tests
-  hosts: app_servers
-  become: false
+  hosts: control_node
   gather_facts: false
   tags:
     - smoketest
   tasks:
+    - name: os_server_info
+      os_server_info:
+        server: load_balancers
+      register: lb_instance
 
-    - name: test
-      debug: msg="{{ groups.load_balancers }}"
-
-    - name: Check webserver for correct response
+    - name: Smoke test for muti-tier app
       uri:
-        url: "http://{{ groups.load_balancers[0]['private_v4'] }}/ping"
+        url: "http://{{ __instance.private_v4 }}/?name=root"
+        method: GET
         return_content: yes
-      until: '"alive" in result.content'
-      retries: 10
-      delay: 1
-      register: result
-      delegate_to: localhost
+      loop: "{{ lb_instance.openstack_servers }}"
+      loop_control:
+        loop_var: __instance
+      register: content
+    - name: Debug Content
+      debug:
+        msg: "{{ content }}"
