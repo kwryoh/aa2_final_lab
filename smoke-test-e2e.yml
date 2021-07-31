@@ -12,7 +12,7 @@
 
     - name: Smoke test for muti-tier app
       uri:
-        url: "http://{{ __instance.private_v4 }}/?name=root"
+        url: "http://{{ __instance.private_v4 }}/ping"
         method: GET
         return_content: yes
       loop: "{{ lb_instance.openstack_servers }}"
