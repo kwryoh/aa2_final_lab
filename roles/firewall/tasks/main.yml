@@ -1,0 +1,7 @@
+---
+# tasks file for firewall
+- include_tasks: install.yml
+- include_tasks: service.yml
+- include_tasks: open_services.yml
+- include_tasks: open_ports.yml
+

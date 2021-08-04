@@ -1,0 +1,17 @@
+---
+- name: Deploy, configure, and populate flask repo and virtualenv
+  hosts: app_servers
+  become: true
+  gather_facts: false
+  tags:
+    - application_servers
+    - flask
+  roles:
+    - role: firewall
+      vars:
+        firewalld_open_services:
+          - http
+        firewalld_open_ports:
+          - "8080/tcp"
+
+    - role: flask

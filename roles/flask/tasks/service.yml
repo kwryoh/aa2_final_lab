@@ -1,0 +1,6 @@
+---
+- name: start systemd app service
+  systemd:
+    name: "{{ flask_app_name }}.service"
+    state: restarted
+    enabled: yes

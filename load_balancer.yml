@@ -1,0 +1,16 @@
+---
+- name: Deploy haproxy load balancer
+  hosts: load_balancers
+  gather_facts: false
+  become: true
+  tags:
+    - load_balancers
+  roles:
+    - role: firewall
+      vars:
+        firewalld_open_services:
+          - http
+        firewalld_open_ports:
+          - "80/tcp"
+
+    - role: haproxy

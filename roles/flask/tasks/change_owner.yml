@@ -1,0 +1,5 @@
+---
+- name: "Change flash repo owner to {{ flask_user }} recursively"
+  file:
+    dest: "{{ flask_home }}/{{ flask_app_name }}"
+    owner: "{{ flask_user }}"

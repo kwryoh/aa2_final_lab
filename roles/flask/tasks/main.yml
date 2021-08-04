@@ -1,0 +1,9 @@
+---
+# tasks file for roles/flask
+- import_tasks: create_user.yml
+- import_tasks: install.yml
+- import_tasks: change_owner.yml
+- import_tasks: setup_venv.yml
+- import_tasks: initialize_db.yml
+- import_tasks: gen_files.yml
+- import_tasks: service.yml
